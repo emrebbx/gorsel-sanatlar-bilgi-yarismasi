@@ -6,34 +6,105 @@
   <title>Görsel Sanatlar Bilgi Yarışması</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <main id="game">
 
-    <!-- GİRİŞ -->
+    <!-- =========================
+         GİRİŞ EKRANI
+    ========================== -->
     <section id="startScreen" class="screen active">
+
       <img
         class="start-bg"
         src="images/giris-arkaplan.webp"
         alt="Görsel Sanatlar Bilgi Yarışması"
       >
 
-      <button id="startButton" class="start-button" aria-label="Başla">
-        <img src="images/basla.png" alt="Başla">
+      <button
+        id="startButton"
+        class="start-button"
+        aria-label="Başla"
+      >
+        <img
+          src="images/basla.png"
+          alt="Başla"
+        >
       </button>
+
     </section>
 
-    <!-- 50 SORU EKRANI - ŞİMDİLİK GEÇİCİ -->
+
+    <!-- =========================
+         50 SORU EKRANI
+    ========================== -->
     <section id="questionBoard" class="screen">
-      <div class="board">
-        <h1>SORUNU SEÇ</h1>
-        <div id="questionGrid" class="question-grid"></div>
-        <button id="backButton" class="back-button">← GERİ</button>
+
+      <!-- KIRMIZI TAKIM SKORU -->
+      <div class="score-box red-score-box">
+
+        <img
+          src="images/kirmizi-skor.png"
+          alt="Kırmızı Takım"
+        >
+
+        <span
+          id="redScore"
+          class="score-number red-score-number"
+        >
+          0
+        </span>
+
       </div>
+
+
+      <!-- MAVİ TAKIM SKORU -->
+      <div class="score-box blue-score-box">
+
+        <img
+          src="images/mavi-skor.png"
+          alt="Mavi Takım"
+        >
+
+        <span
+          id="blueScore"
+          class="score-number blue-score-number"
+        >
+          0
+        </span>
+
+      </div>
+
+
+      <!-- SORU SEÇİM PANOSU -->
+      <div class="board">
+
+        <!-- Arka plan görselinde zaten yazdığı için gizli -->
+        <h1>SORUNU SEÇ</h1>
+
+        <!-- 1–50 butonlar JS ile buraya gelecek -->
+        <div
+          id="questionGrid"
+          class="question-grid"
+        ></div>
+
+        <!-- GERİ -->
+        <button
+          id="backButton"
+          class="back-button"
+        >
+          ← GERİ
+        </button>
+
+      </div>
+
     </section>
 
   </main>
 
+
   <script src="game.js"></script>
+
 </body>
 </html>

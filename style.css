@@ -48,7 +48,6 @@ body{
 
 .start-button{
   position:absolute;
-
   left:50%;
   top:68%;
   width:28%;
@@ -100,27 +99,16 @@ body{
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-
-  padding:0;
 }
 
 .board{
   position:absolute;
   inset:0;
-
   width:100%;
   height:100%;
-
-  padding:0;
-  border:0;
-  border-radius:0;
-
   background:transparent;
-  box-shadow:none;
 }
 
-/* Arka planda SORUNU SEÇ yazdığı için
-   HTML başlığını gizliyoruz */
 .board h1{
   display:none;
 }
@@ -133,15 +121,18 @@ body{
 .question-grid{
   position:absolute;
 
+  /* Panonun tam merkezi */
   left:50%;
-  top:25.5%;
-  transform:translateX(-50%);
+  top:51.5%;
 
-  /* Panonun içine oturacak alan */
-  width:60.5%;
-  height:46.5%;
+  transform:translate(-50%, -50%);
+
+  /* Panonun iç alanına göre */
+  width:58.5%;
+  height:42.5%;
 
   display:grid;
+
   grid-template-columns:repeat(10, 1fr);
   grid-template-rows:repeat(5, 1fr);
 
@@ -164,19 +155,28 @@ body{
       #0b81c4 100%
     );
 
-  color:#fff;
+  color:#ffffff;
 
-  font-size:clamp(17px,1.55vw,31px);
+  /* SAYILAR BÜYÜTÜLDÜ */
+  font-size:clamp(24px,2.15vw,42px);
   font-weight:900;
+  line-height:1;
 
   text-shadow:
-    0 2px 0 #082d55;
+    0 2px 0 #082d55,
+    0 0 2px #082d55;
 
   box-shadow:
     0 4px 0 #082d55,
     inset 0 3px 0 rgba(255,255,255,.35);
 
   cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:0;
 
   transition:
     transform .07s ease,
@@ -246,9 +246,7 @@ body{
 
 .back-button:active{
   transform:translateY(5px);
-
-  box-shadow:
-    0 1px 0 #4d2a0b;
+  box-shadow:0 1px 0 #4d2a0b;
 }
 
 

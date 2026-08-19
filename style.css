@@ -119,8 +119,8 @@ body{
 .question-grid{
   position:absolute;
 
-  /* PANONUN TAM ORTASINA */
-  left:50%;
+  /* SAĞA KAYDIRILDI */
+  left:51.5%;
   top:51%;
 
   transform:translate(-50%, -50%);
@@ -155,7 +155,6 @@ body{
 
   color:#fff;
 
-  /* SAYILAR BÜYÜK */
   font-size:clamp(28px,2.4vw,46px);
   font-weight:900;
   line-height:1;

@@ -1,117 +1,305 @@
-const startScreen = document.getElementById("startScreen");
-const questionBoard = document.getElementById("questionBoard");
-const startButton = document.getElementById("startButton");
-const backButton = document.getElementById("backButton");
-const questionGrid = document.getElementById("questionGrid");
+const startScreen =
+  document.getElementById("startScreen");
+
+const questionBoard =
+  document.getElementById("questionBoard");
+
+const questionScreen =
+  document.getElementById("questionScreen");
+
+const startButton =
+  document.getElementById("startButton");
+
+const backButton =
+  document.getElementById("backButton");
+
+const questionBackButton =
+  document.getElementById("questionBackButton");
+
+const questionGrid =
+  document.getElementById("questionGrid");
+
+
 
 // =========================
 // SESLER
 // =========================
 
-const tikSesi = new Audio("sounds/tik.mp3");
-const girisMuzigi = new Audio("sounds/giris-muzik.mp3");
+const tikSesi =
+  new Audio("sounds/tik.mp3");
+
+const girisMuzigi =
+  new Audio("sounds/giris-muzik.mp3");
+
 
 tikSesi.volume = 1;
 
 girisMuzigi.volume = 0.45;
+
 girisMuzigi.loop = true;
+
+
+
+// =========================
+// SKORLAR
+// =========================
+
+let redScore = 0;
+let blueScore = 0;
+
+
+function updateScores(){
+
+  document
+    .querySelectorAll(".red-score-value")
+    .forEach(element => {
+
+      element.textContent =
+        redScore;
+
+    });
+
+
+  document
+    .querySelectorAll(".blue-score-value")
+    .forEach(element => {
+
+      element.textContent =
+        blueScore;
+
+    });
+
+}
+
+
+updateScores();
+
 
 
 // =========================
 // 1–50 SORU BUTONLARI
 // =========================
 
-for (let i = 1; i <= 50; i++) {
+for(let i = 1; i <= 50; i++){
 
-  const b = document.createElement("button");
+  const button =
+    document.createElement("button");
 
-  b.className = "question-button";
-  b.textContent = i;
-  b.dataset.question = i;
 
-  b.addEventListener("click", () => {
+  button.className =
+    "question-button";
 
-    // Tık sesi
-    tikSesi.currentTime = 0;
-    tikSesi.play().catch(() => {});
 
-    console.log(`Soru ${i} seçildi`);
+  button.textContent =
+    i;
 
-  });
 
-  questionGrid.appendChild(b);
+  button.dataset.question =
+    i;
+
+
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      // Kullanılmış soruysa açma
+      if(
+        button.classList.contains("used")
+      ){
+        return;
+      }
+
+
+      // Tık sesi
+      tikSesi.currentTime = 0;
+
+      tikSesi
+        .play()
+        .catch(() => {});
+
+
+      // ŞİMDİLİK SADECE
+      // SORU 1 AKTİF
+      if(i === 1){
+
+        questionBoard
+          .classList
+          .remove("active");
+
+
+        questionScreen
+          .classList
+          .add("active");
+
+      }
+
+    }
+  );
+
+
+  questionGrid
+    .appendChild(button);
+
 }
+
 
 
 // =========================
 // BAŞLA BUTONU ANİMASYONU
 // =========================
 
-startButton.addEventListener("pointerdown", () => {
-  startButton.classList.add("pressed");
-});
+startButton.addEventListener(
+  "pointerdown",
+  () => {
 
-window.addEventListener("pointerup", () => {
-  startButton.classList.remove("pressed");
-});
+    startButton
+      .classList
+      .add("pressed");
+
+  }
+);
+
+
+window.addEventListener(
+  "pointerup",
+  () => {
+
+    startButton
+      .classList
+      .remove("pressed");
+
+  }
+);
+
 
 
 // =========================
 // BAŞLA
 // =========================
 
-startButton.addEventListener("click", () => {
+startButton.addEventListener(
+  "click",
+  () => {
 
-  // Buton tık sesi
-  tikSesi.currentTime = 0;
-  tikSesi.play().catch(() => {});
+    // Tık sesi
+    tikSesi.currentTime = 0;
 
-  // Butonu basılmış halde göster
-  startButton.classList.add("pressed");
+    tikSesi
+      .play()
+      .catch(() => {});
 
-  setTimeout(() => {
 
-    // Butonu normale döndür
-    startButton.classList.remove("pressed");
+    // Basılma efekti
+    startButton
+      .classList
+      .add("pressed");
 
-    // Giriş ekranını kapat
-    startScreen.classList.remove("active");
 
-    // 50 soru ekranını aç
-    questionBoard.classList.add("active");
+    setTimeout(() => {
 
-    // MÜZİĞİ TAM BURADA BAŞLAT
+      startButton
+        .classList
+        .remove("pressed");
+
+
+      startScreen
+        .classList
+        .remove("active");
+
+
+      questionBoard
+        .classList
+        .add("active");
+
+
+      // Müzik burada başlar
+      girisMuzigi.currentTime = 0;
+
+      girisMuzigi.volume = 0.45;
+
+      girisMuzigi.loop = true;
+
+
+      girisMuzigi
+        .play()
+        .catch(error => {
+
+          console.log(
+            "Müzik başlatılamadı:",
+            error
+          );
+
+        });
+
+    },170);
+
+  }
+);
+
+
+
+// =========================
+// 50 SORU EKRANI → GİRİŞ
+// =========================
+
+backButton.addEventListener(
+  "click",
+  () => {
+
+    // Tık sesi
+    tikSesi.currentTime = 0;
+
+    tikSesi
+      .play()
+      .catch(() => {});
+
+
+    // Müziği durdur
+    girisMuzigi.pause();
+
     girisMuzigi.currentTime = 0;
-    girisMuzigi.volume = 0.45;
-    girisMuzigi.loop = true;
 
-    girisMuzigi.play().catch((error) => {
-      console.log("Müzik başlatılamadı:", error);
-    });
 
-  }, 170);
+    questionBoard
+      .classList
+      .remove("active");
 
-});
+
+    startScreen
+      .classList
+      .add("active");
+
+  }
+);
+
 
 
 // =========================
-// GERİ BUTONU
+// SORU 1 → 50 SORU EKRANI
+// ŞİMDİLİK TEST AMAÇLI
 // =========================
 
-backButton.addEventListener("click", () => {
+questionBackButton.addEventListener(
+  "click",
+  () => {
 
-  // Tık sesi
-  tikSesi.currentTime = 0;
-  tikSesi.play().catch(() => {});
+    // Tık sesi
+    tikSesi.currentTime = 0;
 
-  // Yarışma müziğini durdur
-  girisMuzigi.pause();
-  girisMuzigi.currentTime = 0;
+    tikSesi
+      .play()
+      .catch(() => {});
 
-  // Soru ekranını kapat
-  questionBoard.classList.remove("active");
 
-  // Giriş ekranına dön
-  startScreen.classList.add("active");
+    questionScreen
+      .classList
+      .remove("active");
 
-});
+
+    questionBoard
+      .classList
+      .add("active");
+
+  }
+);

@@ -31,7 +31,11 @@ body{
   display:block;
 }
 
-/* GİRİŞ ARKA PLANI */
+
+/* =========================
+   GİRİŞ EKRANI
+========================= */
+
 .start-bg{
   position:absolute;
   inset:0;
@@ -42,11 +46,9 @@ body{
   -webkit-user-drag:none;
 }
 
-/* ŞEFFAF PNG BAŞLA BUTONU */
 .start-button{
   position:absolute;
 
-  /* 16:9 ekranda orta-alt boşluğa yerleşir */
   left:50%;
   top:68%;
   width:28%;
@@ -79,80 +81,189 @@ body{
   filter:brightness(1.04);
 }
 
-/* Mouse/parmak basılıyken fiziksel olarak çöksün */
 .start-button.pressed,
 .start-button:active{
   transform:translate(-50%, calc(-50% + 10px)) scale(.97);
   filter:brightness(.92);
 }
 
-/* GEÇİCİ 50 SORU EKRANI */
+
+/* =========================
+   50 SORU EKRANI
+========================= */
+
 #questionBoard{
-  background:
-    linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.88)),
-    #f4ead3;
-  padding:3vh 4vw;
+  position:absolute;
+  inset:0;
+
+  background-image:url("images/50-arkaplan.webp");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  padding:0;
 }
 
+
+/* Eski beyaz paneli kaldırıyoruz */
 .board{
+  position:absolute;
+  inset:0;
+
   width:100%;
   height:100%;
-  padding:2%;
-  border-radius:30px;
-  border:5px solid #163963;
-  background:#fff9e8;
-  box-shadow:0 12px 0 #163963;
+
+  padding:0;
+
+  border:0;
+  border-radius:0;
+
+  background:transparent;
+  box-shadow:none;
 }
 
+
+/* Arka planda zaten SORUNU SEÇ yazdığı için
+   HTML'deki başlığı görünmez yapıyoruz */
 .board h1{
-  text-align:center;
-  margin:0 0 2vh;
-  color:#163963;
-  font-size:clamp(32px,4vw,70px);
+  display:none;
 }
+
+
+/* =========================
+   1–50 SORU BUTONLARI
+========================= */
 
 .question-grid{
+  position:absolute;
+
+  left:18.5%;
+  top:25%;
+
+  width:63%;
+
   display:grid;
   grid-template-columns:repeat(10,1fr);
-  gap:1.2vh 1vw;
+
+  column-gap:1.2%;
+  row-gap:1.6vh;
 }
 
 .question-button{
-  aspect-ratio:1.35/1;
-  border:3px solid #163963;
-  border-radius:16px;
-  background:#36abe0;
+  width:100%;
+  aspect-ratio:1.18 / 1;
+
+  border:3px solid #082d55;
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #4cc7f5 0%,
+      #209fdf 55%,
+      #0b81c4 100%
+    );
+
   color:#fff;
-  font-size:clamp(18px,2vw,38px);
+
+  font-size:clamp(17px,1.8vw,36px);
   font-weight:900;
-  box-shadow:0 6px 0 #163963;
+
+  text-shadow:
+    0 2px 0 #082d55;
+
+  box-shadow:
+    0 5px 0 #082d55,
+    inset 0 3px 0 rgba(255,255,255,.35);
+
   cursor:pointer;
+
+  transition:
+    transform .07s ease,
+    filter .07s ease,
+    box-shadow .07s ease;
+}
+
+.question-button:hover{
+  filter:brightness(1.08);
+  transform:scale(1.035);
 }
 
 .question-button:active{
-  transform:translateY(5px);
-  box-shadow:0 1px 0 #163963;
+  transform:translateY(5px) scale(.98);
+
+  box-shadow:
+    0 1px 0 #082d55,
+    inset 0 3px 6px rgba(0,0,0,.15);
 }
+
+
+/* =========================
+   GERİ BUTONU
+========================= */
 
 .back-button{
   position:absolute;
-  left:5%;
-  bottom:5%;
-  padding:12px 24px;
-  border:3px solid #163963;
-  border-radius:14px;
-  background:#ffbd35;
-  color:#163963;
+
+  left:4.5%;
+  bottom:4.8%;
+
+  width:13%;
+  min-width:150px;
+
+  padding:14px 20px;
+
+  border:4px solid #4d2a0b;
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffcd47,
+      #f49b19
+    );
+
+  color:#3d2508;
+
+  font-size:clamp(18px,1.6vw,30px);
   font-weight:900;
+
+  box-shadow:
+    0 6px 0 #4d2a0b,
+    inset 0 3px 0 rgba(255,255,255,.35);
+
   cursor:pointer;
+
+  transition:
+    transform .07s ease,
+    filter .07s ease;
 }
 
-/* Çok geniş ekranlarda bile buton gereksiz büyümesin */
-@media (min-aspect-ratio: 20/9){
-  .start-bg{
-    object-fit:cover;
-  }
+.back-button:hover{
+  filter:brightness(1.07);
+  transform:scale(1.04);
+}
+
+.back-button:active{
+  transform:translateY(5px);
+
+  box-shadow:
+    0 1px 0 #4d2a0b;
+}
+
+
+/* =========================
+   GENİŞ EKRAN AYARI
+========================= */
+
+@media (min-aspect-ratio:20/9){
+
   .start-button{
     width:24%;
+  }
+
+  .question-grid{
+    width:58%;
+    left:21%;
   }
 }

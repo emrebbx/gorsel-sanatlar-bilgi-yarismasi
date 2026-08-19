@@ -10,33 +10,25 @@
 
   <main id="game">
 
-    <!-- AÇILIŞ EKRANI -->
+    <!-- GİRİŞ -->
     <section id="startScreen" class="screen active">
-      <img class="start-bg" src="images/giris-ekrani.png" alt="Görsel Sanatlar Bilgi Yarışması">
+      <img
+        class="start-bg"
+        src="images/giris-arkaplan.png"
+        alt="Görsel Sanatlar Bilgi Yarışması"
+      >
 
-      <!-- Görseldeki yeşil BAŞLA butonunun üstüne oturan gerçek buton -->
       <button id="startButton" class="start-button" aria-label="Başla">
-        BAŞLA
+        <img src="images/basla.png" alt="Başla">
       </button>
     </section>
 
-    <!-- 50 SORULUK EKRAN -->
+    <!-- 50 SORU EKRANI - ŞİMDİLİK GEÇİCİ -->
     <section id="questionBoard" class="screen">
-      <div class="board-shell">
-        <header class="board-header">
-          <div class="mini-palette">🎨</div>
-          <div>
-            <h1>GÖRSEL SANATLAR</h1>
-            <h2>BİLGİ YARIŞMASI</h2>
-          </div>
-          <div class="mini-palette">🖌️</div>
-        </header>
-
-        <div class="board-title">SORUNU SEÇ</div>
-
+      <div class="board">
+        <h1>SORUNU SEÇ</h1>
         <div id="questionGrid" class="question-grid"></div>
-
-        <button id="backButton" class="back-button">← GERİ DÖN</button>
+        <button id="backButton" class="back-button">← GERİ</button>
       </div>
     </section>
 

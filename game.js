@@ -4,37 +4,49 @@ const startButton = document.getElementById("startButton");
 const backButton = document.getElementById("backButton");
 const questionGrid = document.getElementById("questionGrid");
 
+// =========================
 // SESLER
+// =========================
+
 const tikSesi = new Audio("sounds/tik.mp3");
 const girisMuzigi = new Audio("sounds/giris-muzik.mp3");
 
-girisMuzigi.loop = true;
+tikSesi.volume = 1;
+
 girisMuzigi.volume = 0.45;
+girisMuzigi.loop = true;
 
-// Tarayıcı izin verirse giriş müziğini başlat
-function muzigiBaslat() {
-  girisMuzigi.play().catch(() => {});
-}
 
-document.addEventListener("click", muzigiBaslat, { once: true });
+// =========================
+// 1–50 SORU BUTONLARI
+// =========================
 
-// 1-50 geçici buton
-for(let i = 1; i <= 50; i++){
+for (let i = 1; i <= 50; i++) {
+
   const b = document.createElement("button");
+
   b.className = "question-button";
   b.textContent = i;
+  b.dataset.question = i;
 
   b.addEventListener("click", () => {
+
+    // Tık sesi
     tikSesi.currentTime = 0;
     tikSesi.play().catch(() => {});
 
     console.log(`Soru ${i} seçildi`);
+
   });
 
   questionGrid.appendChild(b);
 }
 
-// Basılma animasyonu
+
+// =========================
+// BAŞLA BUTONU ANİMASYONU
+// =========================
+
 startButton.addEventListener("pointerdown", () => {
   startButton.classList.add("pressed");
 });
@@ -43,40 +55,63 @@ window.addEventListener("pointerup", () => {
   startButton.classList.remove("pressed");
 });
 
+
+// =========================
 // BAŞLA
+// =========================
+
 startButton.addEventListener("click", () => {
+
+  // Buton tık sesi
   tikSesi.currentTime = 0;
   tikSesi.play().catch(() => {});
 
+  // Butonu basılmış halde göster
   startButton.classList.add("pressed");
 
-  // Giriş müziğini yavaşça kıs
-  const fade = setInterval(() => {
-    if(girisMuzigi.volume > 0.05){
-      girisMuzigi.volume = Math.max(0, girisMuzigi.volume - 0.05);
-    } else {
-      clearInterval(fade);
-      girisMuzigi.pause();
-      girisMuzigi.currentTime = 0;
-      girisMuzigi.volume = 0.45;
-    }
-  }, 60);
-
   setTimeout(() => {
+
+    // Butonu normale döndür
     startButton.classList.remove("pressed");
+
+    // Giriş ekranını kapat
     startScreen.classList.remove("active");
+
+    // 50 soru ekranını aç
     questionBoard.classList.add("active");
+
+    // MÜZİĞİ TAM BURADA BAŞLAT
+    girisMuzigi.currentTime = 0;
+    girisMuzigi.volume = 0.45;
+    girisMuzigi.loop = true;
+
+    girisMuzigi.play().catch((error) => {
+      console.log("Müzik başlatılamadı:", error);
+    });
+
   }, 170);
+
 });
 
-// GERİ
+
+// =========================
+// GERİ BUTONU
+// =========================
+
 backButton.addEventListener("click", () => {
+
+  // Tık sesi
   tikSesi.currentTime = 0;
   tikSesi.play().catch(() => {});
 
+  // Yarışma müziğini durdur
+  girisMuzigi.pause();
+  girisMuzigi.currentTime = 0;
+
+  // Soru ekranını kapat
   questionBoard.classList.remove("active");
+
+  // Giriş ekranına dön
   startScreen.classList.add("active");
 
-  girisMuzigi.volume = 0.45;
-  girisMuzigi.play().catch(() => {});
 });

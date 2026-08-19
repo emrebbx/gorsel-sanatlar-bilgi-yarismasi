@@ -52,9 +52,7 @@ body{
   top:68%;
   width:28%;
   max-width:620px;
-
   transform:translate(-50%, -50%);
-
   padding:0;
   margin:0;
   border:0;
@@ -121,28 +119,28 @@ body{
 .question-grid{
   position:absolute;
 
-  /* Panonun tam merkezi */
+  /* PANONUN TAM ORTASINA */
   left:50%;
-  top:51.5%;
+  top:51%;
 
   transform:translate(-50%, -50%);
 
-  /* Panonun iç alanına göre */
-  width:58.5%;
-  height:42.5%;
+  width:56%;
+  height:40%;
 
   display:grid;
-
   grid-template-columns:repeat(10, 1fr);
   grid-template-rows:repeat(5, 1fr);
 
-  column-gap:0.75vw;
-  row-gap:1.15vh;
+  column-gap:0.7vw;
+  row-gap:1vh;
 }
 
 .question-button{
   width:100%;
   height:100%;
+
+  padding:0;
 
   border:3px solid #082d55;
   border-radius:13px;
@@ -155,12 +153,16 @@ body{
       #0b81c4 100%
     );
 
-  color:#ffffff;
+  color:#fff;
 
-  /* SAYILAR BÜYÜTÜLDÜ */
-  font-size:clamp(24px,2.15vw,42px);
+  /* SAYILAR BÜYÜK */
+  font-size:clamp(28px,2.4vw,46px);
   font-weight:900;
   line-height:1;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
   text-shadow:
     0 2px 0 #082d55,
@@ -171,12 +173,6 @@ body{
     inset 0 3px 0 rgba(255,255,255,.35);
 
   cursor:pointer;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:0;
 
   transition:
     transform .07s ease,

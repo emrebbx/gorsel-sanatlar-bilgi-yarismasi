@@ -104,8 +104,6 @@ body{
   padding:0;
 }
 
-
-/* Eski beyaz paneli kaldırıyoruz */
 .board{
   position:absolute;
   inset:0;
@@ -114,7 +112,6 @@ body{
   height:100%;
 
   padding:0;
-
   border:0;
   border-radius:0;
 
@@ -122,9 +119,8 @@ body{
   box-shadow:none;
 }
 
-
-/* Arka planda zaten SORUNU SEÇ yazdığı için
-   HTML'deki başlığı görünmez yapıyoruz */
+/* Arka planda SORUNU SEÇ yazdığı için
+   HTML başlığını gizliyoruz */
 .board h1{
   display:none;
 }
@@ -137,24 +133,28 @@ body{
 .question-grid{
   position:absolute;
 
-  left:18.5%;
-  top:25%;
+  left:50%;
+  top:25.5%;
+  transform:translateX(-50%);
 
-  width:63%;
+  /* Panonun içine oturacak alan */
+  width:60.5%;
+  height:46.5%;
 
   display:grid;
-  grid-template-columns:repeat(10,1fr);
+  grid-template-columns:repeat(10, 1fr);
+  grid-template-rows:repeat(5, 1fr);
 
-  column-gap:1.2%;
-  row-gap:1.6vh;
+  column-gap:0.75vw;
+  row-gap:1.15vh;
 }
 
 .question-button{
   width:100%;
-  aspect-ratio:1.18 / 1;
+  height:100%;
 
   border:3px solid #082d55;
-  border-radius:15px;
+  border-radius:13px;
 
   background:
     linear-gradient(
@@ -166,14 +166,14 @@ body{
 
   color:#fff;
 
-  font-size:clamp(17px,1.8vw,36px);
+  font-size:clamp(17px,1.55vw,31px);
   font-weight:900;
 
   text-shadow:
     0 2px 0 #082d55;
 
   box-shadow:
-    0 5px 0 #082d55,
+    0 4px 0 #082d55,
     inset 0 3px 0 rgba(255,255,255,.35);
 
   cursor:pointer;
@@ -190,7 +190,7 @@ body{
 }
 
 .question-button:active{
-  transform:translateY(5px) scale(.98);
+  transform:translateY(4px) scale(.98);
 
   box-shadow:
     0 1px 0 #082d55,
@@ -253,7 +253,7 @@ body{
 
 
 /* =========================
-   GENİŞ EKRAN AYARI
+   ÇOK GENİŞ EKRAN
 ========================= */
 
 @media (min-aspect-ratio:20/9){
@@ -262,8 +262,4 @@ body{
     width:24%;
   }
 
-  .question-grid{
-    width:58%;
-    left:21%;
-  }
 }

@@ -15,21 +15,31 @@ body{
 #game{
   position:fixed;
   inset:0;
+
   width:100vw;
   height:100vh;
+
   overflow:hidden;
+
   background:#000;
 }
+
+
+/* =========================
+   GENEL EKRAN
+========================= */
 
 .screen{
   position:absolute;
   inset:0;
+
   display:none;
 }
 
 .screen.active{
   display:block;
 }
+
 
 
 /* =========================
@@ -39,24 +49,34 @@ body{
 .start-bg{
   position:absolute;
   inset:0;
+
   width:100%;
   height:100%;
+
   object-fit:cover;
+
   user-select:none;
   -webkit-user-drag:none;
 }
 
+
 .start-button{
   position:absolute;
+
   left:50%;
   top:68%;
+
   width:28%;
   max-width:620px;
+
   transform:translate(-50%, -50%);
+
   padding:0;
   margin:0;
+
   border:0;
   background:transparent;
+
   cursor:pointer;
 
   transition:
@@ -64,25 +84,38 @@ body{
     filter .09s ease;
 }
 
+
 .start-button img{
   display:block;
+
   width:100%;
   height:auto;
+
   pointer-events:none;
+
   user-select:none;
   -webkit-user-drag:none;
 }
 
+
 .start-button:hover{
-  transform:translate(-50%, -50%) scale(1.035);
+  transform:
+    translate(-50%, -50%)
+    scale(1.035);
+
   filter:brightness(1.04);
 }
 
+
 .start-button.pressed,
 .start-button:active{
-  transform:translate(-50%, calc(-50% + 10px)) scale(.97);
+  transform:
+    translate(-50%, calc(-50% + 10px))
+    scale(.97);
+
   filter:brightness(.92);
 }
+
 
 
 /* =========================
@@ -93,23 +126,30 @@ body{
   position:absolute;
   inset:0;
 
-  background-image:url("images/50-arkaplan.webp");
+  background-image:
+    url("images/50-arkaplan.webp");
+
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
 }
 
+
 .board{
   position:absolute;
   inset:0;
+
   width:100%;
   height:100%;
+
   background:transparent;
 }
+
 
 .board h1{
   display:none;
 }
+
 
 
 /* =========================
@@ -118,63 +158,66 @@ body{
 
 .score-box{
   position:absolute;
+
   top:2.3%;
+
   width:17%;
+
   z-index:30;
+
   pointer-events:none;
 }
+
 
 .red-score-box{
   left:2.5%;
 }
 
+
 .blue-score-box{
   right:2.5%;
 }
 
+
 .score-box img{
   display:block;
+
   width:100%;
   height:auto;
+
   user-select:none;
   -webkit-user-drag:none;
 }
 
-.score-number{
 
+.score-number{
   position:absolute;
 
   left:50%;
-
   top:60%;
 
-  transform:translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 
   color:#fff;
 
-  font-size:clamp(50px,5vw,96px);
+  font-size:
+    clamp(50px,5vw,96px);
 
   font-weight:900;
 
   line-height:1;
 
-  -webkit-text-stroke:3px #111827;
-
-  text-shadow:
-
-    0 3px 0 #111827,
-
-    0 6px 8px rgba(0,0,0,.35);
+  -webkit-text-stroke:
+    3px #111827;
 
   display:flex;
 
   align-items:center;
-
   justify-content:center;
-
 }
 
-/* KIRMIZI SKOR SAYISI */
+
 .red-score-number{
   text-shadow:
     0 3px 0 #4b0909,
@@ -182,12 +225,12 @@ body{
 }
 
 
-/* MAVİ SKOR SAYISI */
 .blue-score-number{
   text-shadow:
     0 3px 0 #071c45,
     0 6px 8px rgba(0,0,0,.35);
 }
+
 
 
 /* =========================
@@ -200,18 +243,24 @@ body{
   left:51.2%;
   top:51%;
 
-  transform:translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 
   width:56%;
   height:40%;
 
   display:grid;
-  grid-template-columns:repeat(10, 1fr);
-  grid-template-rows:repeat(5, 1fr);
 
-  column-gap:0.7vw;
+  grid-template-columns:
+    repeat(10,1fr);
+
+  grid-template-rows:
+    repeat(5,1fr);
+
+  column-gap:.7vw;
   row-gap:1vh;
 }
+
 
 .question-button{
   width:100%;
@@ -219,7 +268,9 @@ body{
 
   padding:0;
 
-  border:3px solid #082d55;
+  border:
+    3px solid #082d55;
+
   border-radius:13px;
 
   background:
@@ -232,11 +283,15 @@ body{
 
   color:#fff;
 
-  font-size:clamp(28px,2.4vw,46px);
+  font-size:
+    clamp(28px,2.4vw,46px);
+
   font-weight:900;
+
   line-height:1;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
@@ -246,7 +301,8 @@ body{
 
   box-shadow:
     0 4px 0 #082d55,
-    inset 0 3px 0 rgba(255,255,255,.35);
+    inset 0 3px 0
+    rgba(255,255,255,.35);
 
   cursor:pointer;
 
@@ -256,34 +312,51 @@ body{
     box-shadow .07s ease;
 }
 
+
 .question-button:hover{
   filter:brightness(1.08);
-  transform:scale(1.035);
+
+  transform:
+    scale(1.035);
 }
 
+
 .question-button:active{
-  transform:translateY(4px) scale(.98);
+  transform:
+    translateY(4px)
+    scale(.98);
 
   box-shadow:
     0 1px 0 #082d55,
-    inset 0 3px 6px rgba(0,0,0,.15);
+    inset 0 3px 6px
+    rgba(0,0,0,.15);
 }
 
 
-/* Kullanılmış soru */
+
+/* =========================
+   KULLANILMIŞ SORU
+========================= */
+
 .question-button.used{
-  filter:grayscale(.85) brightness(.72);
+  filter:
+    grayscale(.85)
+    brightness(.72);
+
   opacity:.65;
+
   cursor:not-allowed;
 }
+
 
 .question-button.used:hover{
   transform:none;
 }
 
 
+
 /* =========================
-   GERİ BUTONU
+   50 SORU EKRANI GERİ
 ========================= */
 
 .back-button{
@@ -297,7 +370,9 @@ body{
 
   padding:14px 20px;
 
-  border:4px solid #4d2a0b;
+  border:
+    4px solid #4d2a0b;
+
   border-radius:18px;
 
   background:
@@ -309,12 +384,15 @@ body{
 
   color:#3d2508;
 
-  font-size:clamp(18px,1.6vw,30px);
+  font-size:
+    clamp(18px,1.6vw,30px);
+
   font-weight:900;
 
   box-shadow:
     0 6px 0 #4d2a0b,
-    inset 0 3px 0 rgba(255,255,255,.35);
+    inset 0 3px 0
+    rgba(255,255,255,.35);
 
   cursor:pointer;
 
@@ -323,22 +401,116 @@ body{
     filter .07s ease;
 }
 
+
 .back-button:hover{
   filter:brightness(1.07);
-  transform:scale(1.04);
+
+  transform:
+    scale(1.04);
 }
 
+
 .back-button:active{
-  transform:translateY(5px);
-  box-shadow:0 1px 0 #4d2a0b;
+  transform:
+    translateY(5px);
+
+  box-shadow:
+    0 1px 0 #4d2a0b;
 }
+
+
+
+/* =========================
+   SORU EKRANI
+========================= */
+
+#questionScreen{
+  position:absolute;
+  inset:0;
+
+  background:#000;
+}
+
+
+.question-bg{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+
+
+/* =========================
+   SORU EKRANI GERİ
+   ŞİMDİLİK TEST AMAÇLI
+========================= */
+
+.question-back-button{
+  position:absolute;
+
+  left:3%;
+  bottom:4%;
+
+  z-index:40;
+
+  padding:14px 26px;
+
+  border:
+    4px solid #4d2a0b;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffcd47,
+      #f49b19
+    );
+
+  color:#3d2508;
+
+  font-size:
+    clamp(18px,1.6vw,30px);
+
+  font-weight:900;
+
+  box-shadow:
+    0 6px 0 #4d2a0b,
+    inset 0 3px 0
+    rgba(255,255,255,.35);
+
+  cursor:pointer;
+}
+
+
+.question-back-button:hover{
+  filter:brightness(1.07);
+}
+
+
+.question-back-button:active{
+  transform:
+    translateY(5px);
+
+  box-shadow:
+    0 1px 0 #4d2a0b;
+}
+
 
 
 /* =========================
    ÇOK GENİŞ EKRAN
 ========================= */
 
-@media (min-aspect-ratio:20/9){
+@media
+(min-aspect-ratio:20/9){
 
   .start-button{
     width:24%;

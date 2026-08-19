@@ -113,13 +113,79 @@ body{
 
 
 /* =========================
+   SKOR TABELALARI
+========================= */
+
+.score-box{
+  position:absolute;
+  top:2.3%;
+  width:17%;
+  z-index:30;
+  pointer-events:none;
+}
+
+.red-score-box{
+  left:2.5%;
+}
+
+.blue-score-box{
+  right:2.5%;
+}
+
+.score-box img{
+  display:block;
+  width:100%;
+  height:auto;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+.score-number{
+  position:absolute;
+
+  /* Tabelanın koyu iç alanının merkezi */
+  left:50%;
+  top:66%;
+
+  transform:translate(-50%, -50%);
+
+  color:#fff;
+
+  font-size:clamp(38px,4vw,76px);
+  font-weight:900;
+  line-height:1;
+
+  -webkit-text-stroke:3px #111827;
+
+  text-shadow:
+    0 3px 0 #111827,
+    0 6px 8px rgba(0,0,0,.35);
+}
+
+
+/* KIRMIZI SKOR SAYISI */
+.red-score-number{
+  text-shadow:
+    0 3px 0 #4b0909,
+    0 6px 8px rgba(0,0,0,.35);
+}
+
+
+/* MAVİ SKOR SAYISI */
+.blue-score-number{
+  text-shadow:
+    0 3px 0 #071c45,
+    0 6px 8px rgba(0,0,0,.35);
+}
+
+
+/* =========================
    1–50 SORU BUTONLARI
 ========================= */
 
 .question-grid{
   position:absolute;
 
-  /* SAĞA KAYDIRILDI */
   left:51.2%;
   top:51%;
 
@@ -190,6 +256,18 @@ body{
   box-shadow:
     0 1px 0 #082d55,
     inset 0 3px 6px rgba(0,0,0,.15);
+}
+
+
+/* Kullanılmış soru */
+.question-button.used{
+  filter:grayscale(.85) brightness(.72);
+  opacity:.65;
+  cursor:not-allowed;
+}
+
+.question-button.used:hover{
+  transform:none;
 }
 
 

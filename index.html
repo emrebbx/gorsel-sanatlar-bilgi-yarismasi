@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Görsel Sanatlar Bilgi Yarışması</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,9 +13,11 @@
 
   <main id="game">
 
+
     <!-- =========================
          GİRİŞ EKRANI
     ========================== -->
+
     <section id="startScreen" class="screen active">
 
       <img
@@ -36,12 +40,16 @@
     </section>
 
 
+
     <!-- =========================
          50 SORU EKRANI
     ========================== -->
+
     <section id="questionBoard" class="screen">
 
+
       <!-- KIRMIZI TAKIM SKORU -->
+
       <div class="score-box red-score-box">
 
         <img
@@ -49,17 +57,16 @@
           alt="Kırmızı Takım"
         >
 
-        <span
-          id="redScore"
-          class="score-number red-score-number"
-        >
+        <span class="score-number red-score-number red-score-value">
           0
         </span>
 
       </div>
 
 
+
       <!-- MAVİ TAKIM SKORU -->
+
       <div class="score-box blue-score-box">
 
         <img
@@ -67,29 +74,26 @@
           alt="Mavi Takım"
         >
 
-        <span
-          id="blueScore"
-          class="score-number blue-score-number"
-        >
+        <span class="score-number blue-score-number blue-score-value">
           0
         </span>
 
       </div>
 
 
+
       <!-- SORU SEÇİM PANOSU -->
+
       <div class="board">
 
-        <!-- Arka plan görselinde zaten yazdığı için gizli -->
         <h1>SORUNU SEÇ</h1>
 
-        <!-- 1–50 butonlar JS ile buraya gelecek -->
         <div
           id="questionGrid"
           class="question-grid"
         ></div>
 
-        <!-- GERİ -->
+
         <button
           id="backButton"
           class="back-button"
@@ -100,6 +104,70 @@
       </div>
 
     </section>
+
+
+
+    <!-- =========================
+         SORU 1 EKRANI
+    ========================== -->
+
+    <section id="questionScreen" class="screen">
+
+
+      <!-- SORU ARKA PLANI -->
+
+      <img
+        class="question-bg"
+        src="images/soru-1-arkaplan.webp"
+        alt="Soru 1"
+      >
+
+
+      <!-- KIRMIZI TAKIM SKORU -->
+
+      <div class="score-box red-score-box">
+
+        <img
+          src="images/kirmizi-skor.png"
+          alt="Kırmızı Takım"
+        >
+
+        <span class="score-number red-score-number red-score-value">
+          0
+        </span>
+
+      </div>
+
+
+
+      <!-- MAVİ TAKIM SKORU -->
+
+      <div class="score-box blue-score-box">
+
+        <img
+          src="images/mavi-skor.png"
+          alt="Mavi Takım"
+        >
+
+        <span class="score-number blue-score-number blue-score-value">
+          0
+        </span>
+
+      </div>
+
+
+      <!-- ŞİMDİLİK TEST İÇİN GERİ -->
+
+      <button
+        id="questionBackButton"
+        class="question-back-button"
+      >
+        ← GERİ
+      </button>
+
+
+    </section>
+
 
   </main>
 

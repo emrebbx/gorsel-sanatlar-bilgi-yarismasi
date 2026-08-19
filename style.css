@@ -141,27 +141,38 @@ body{
 }
 
 .score-number{
+
   position:absolute;
 
-  /* Tabelanın koyu iç alanının merkezi */
   left:50%;
-  top:62%;
+
+  top:60%;
 
   transform:translate(-50%, -50%);
 
   color:#fff;
 
-  font-size:clamp(38px,4vw,76px);
+  font-size:clamp(50px,5vw,96px);
+
   font-weight:900;
+
   line-height:1;
 
   -webkit-text-stroke:3px #111827;
 
   text-shadow:
-    0 3px 0 #111827,
-    0 6px 8px rgba(0,0,0,.35);
-}
 
+    0 3px 0 #111827,
+
+    0 6px 8px rgba(0,0,0,.35);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+}
 
 /* KIRMIZI SKOR SAYISI */
 .red-score-number{
